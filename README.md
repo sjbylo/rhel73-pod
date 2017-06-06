@@ -16,12 +16,12 @@ Build a new example container in OpenShift. Ensure the Dockerfile reads "USER 0"
 Remote shell (rsh) into the container and you can see the ID it is running as is not 0.
 
 ```
-oc new-build . --name rhel73-bash         # Create a new build config
-oc start-build rhel73-bash --from-dir=.   # Start the build, using the content of the current directory
-oc logs bc/rhel73-bash -f                 # View the docker build logs
-oc new-app rhel73-bash                    # Launch a pod
+oc new-build . --name rhel73-bash       # Create a new build config
+oc start-build rhel73-bash --from-dir=. # Start the build, using the content of the current directory
+oc logs bc/rhel73-bash -f               # View the docker build logs
+oc new-app rhel73-bash                  # Launch a pod
 oc get po
-oc rsh <pod name>                         # Remote into the container to see which user ID it is running as. 
+oc rsh <pod name>                       # Remote into the container to see which user ID it is running as. 
 ps -ef 
 ```
 
@@ -41,13 +41,13 @@ oc login -u admin       # Must be logged in and not just the system:admin user
 oc project someproject   
 
 oc adm policy add-scc-to-user anyuid -z default
-# oc add policy add-scc-to-user anyuid system:serviceaccount:someproject:default   # The equivilent command 
+# oc add policy add-scc-to-user anyuid system:serviceaccount:someproject:default # or the equivilent command 
 
 oc edit scc anyuid  # verify the change 
 ```
 Repeat the same above but using non-root user IDs, by changing the value of USER in the Dockerfile. 
 
-See the following command to explore the policies set
+See the following command to explore the policies set.
 
 ```
 oc adm policy --help
