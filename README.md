@@ -1,6 +1,6 @@
-# Example of how to allow pods to run as root and/or a specific user ID.
+# Example of how to allow containers to run as root and/or a specific user ID.
 
-To allow pods to run as root (or any iser) you need to set the policy for the _default service account of your project_.
+To allow containers to run as root (or any iser) you need to set the policy for the _default service account of your project_.
 As "admin" run:
 
 ```
@@ -45,7 +45,7 @@ docker exec -it mycontainer id
 
 Repeat the same above but using non-root user IDs, by changing the value of USER in the Dockerfile. 
 
-Run the following command to explore the policies set
+See the following command to explore the policies set
 
 ```
 oc adm policy --help
