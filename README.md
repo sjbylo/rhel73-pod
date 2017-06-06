@@ -2,6 +2,17 @@
 
 To allow containers to run as root (or any user) you need to set the policy for the _default service account of your project_.
 
+This is the simple Dockerfile we will use.  It simply builds an image and when launched runs a process.
+
+```
+FROM registry.access.redhat.com/rhel-atomic
+MAINTAINER Stephen Bylo <sbylo@redhat.com>
+COPY somefile /tmp
+#USER 1001
+USER 0
+ENTRYPOINT [ "/bin/bash", "-c", "id>/tmp/id;id;sleep 999999" ]
+```
+
 But first we will see what happens if we try to run a contsainer as root on OpenShift.
 
 ## Show that containers running on OpenShift cannot run as root (by default).
