@@ -1,7 +1,5 @@
 FROM registry.access.redhat.com/rhel-atomic
 
-MAINTAINER Stephen Bylo <sbylo@redhat.com>
-
 COPY somefile /tmp
 
 #EXPOSE 8080

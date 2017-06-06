@@ -6,7 +6,6 @@ This is the simple Dockerfile we will use.  It simply builds an image and when l
 
 ```
 FROM registry.access.redhat.com/rhel-atomic
-MAINTAINER Stephen Bylo <sbylo@redhat.com>
 COPY somefile /tmp
 #USER 1001
 USER 0
