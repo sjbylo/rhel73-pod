@@ -36,7 +36,7 @@ oc get po
 Remote shell (rsh) into the container and you will see it is running as non-root (not 0).
 
 ```
-oc rsh <pod name>                       # Remote into the container to see which user ID it is running as. 
+oc rsh <pod name>                     # Remote into the container to see which user ID it is running as. 
 ps -ef 
 ```
 
