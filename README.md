@@ -2,6 +2,8 @@
 
 To allow containers to run as root (or any user) you need to set the policy for the _default service account of your project_.
 
+(Further infos)[https://docs.openshift.com/container-platform/3.5/admin_guide/manage_scc.html#enable-images-to-run-with-user-in-the-dockerfile]
+
 This is the simple Dockerfile we will use.  It simply builds an image and when launched, starts a long running process.
 
 ```
