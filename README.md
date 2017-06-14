@@ -26,10 +26,10 @@ oc project someproject
 Build a new example container in OpenShift using the above example Dockerfile. Ensure the Dockerfile contains "USER 0".
 
 ```
-oc new-build . --name rhel-bash       # Create a new build config
-oc start-build rhel-bash --from-dir=. # Start the build, using the content of the current directory
-oc logs bc/rhel-bash -f               # View the docker build logs
-oc new-app rhel-bash                  # Launch a pod
+oc new-build . --name rhel-pod       # Create a new build config
+oc start-build rhel-pod --from-dir=. # Start the build, using the content of the current directory
+oc logs bc/rhel-pod -f               # View the docker build logs
+oc new-app rhel-pod                  # Launch a pod
 oc get po
 ```
 
@@ -43,8 +43,8 @@ ps -ef
 Now do the same with plain docker.  You can see the container runs as root.
 
 ```
-docker build -t rhel-bash .
-docker run -it -d --name mycontainer rhel-bash
+docker build -t rhel-pod .
+docker run -it -d --name mycontainer rhel-pod
 docker exec -it mycontainer id
 ```
 
