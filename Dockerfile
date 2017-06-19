@@ -7,6 +7,7 @@ COPY somefile /tmp
 USER 1001
 #USER 0
 
-#CMD while true; do sleep 1; done
 ENTRYPOINT [ "/bin/bash", "-c", "id>/tmp/id;id;sleep 999999" ]
+
+#CMD while true; do sleep 1; done
 
