@@ -14,7 +14,7 @@ USER 0
 ENTRYPOINT [ "/bin/bash", "-c", "id>/tmp/id;id;sleep 999999" ]
 ```
 
-But first we will see what happens if we try to run a contsainer as root on OpenShift.
+But first we will see what happens if we try to run a container as root on OpenShift.
 
 ## Show that containers running on OpenShift cannot run as root (by default).
 
@@ -61,6 +61,18 @@ oc adm policy add-scc-to-user anyuid -z default
 oc edit scc anyuid  # verify the change 
 ```
 Repeat the same above but using non-root user IDs, by changing the value of USER in the Dockerfile and re-building the container image. 
+
+Example:
+
+```
+# edit the Dockerfile to switch between "USER 0" and "USER 1001"
+
+oc start-build rhel-pod --from-dir=. # Start the build again
+
+oc logs bc/rhel-pod -f               # View the docker build logs
+
+oc rsh <pod>                         # Check if the container is running as root or not
+```
 
 Use the following command to explore what can be done with policies.
 
