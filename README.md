@@ -97,7 +97,7 @@ Manage policy on pods and containers:
   remove-scc-from-group           Remove group from scc
 ```
 
-Clean up your work with this command.  Careful, this will remove all running containers. 
+If you were using docker, clean up your work with this command.  Careful, this will remove all running containers. 
 
 ```
 docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) 
