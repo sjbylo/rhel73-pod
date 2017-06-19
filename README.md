@@ -62,7 +62,7 @@ oc edit scc anyuid  # verify the change
 ```
 Repeat the same above but using non-root user IDs, by changing the value of USER in the Dockerfile and re-building the container image. 
 
-Use the following command to explore the policies that are set.
+Use the following command to explore what can be done with policies.
 
 ```
 oc adm policy --help
