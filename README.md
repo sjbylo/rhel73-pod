@@ -23,7 +23,8 @@ oc login  -u demouser
 oc project someproject
 ```
 
-Build a new example container in OpenShift using the above example Dockerfile. Ensure the Dockerfile contains "USER 0".
+Build a new example container in OpenShift using the above example Dockerfile. 
+Ensure the Dockerfile contains "*USER 0*".
 
 ```
 oc new-build --name rhel-pod --binary  # Create a new build config
