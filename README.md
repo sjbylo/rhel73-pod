@@ -26,10 +26,10 @@ oc project someproject
 Build a new example container in OpenShift using the above example Dockerfile. Ensure the Dockerfile contains "USER 0".
 
 ```
-oc new-build . --name rhel-pod       # Create a new build config
-oc start-build rhel-pod --from-dir=. # Start the build, using the content of the current directory
-oc logs bc/rhel-pod -f               # View the docker build logs
-oc new-app rhel-pod                  # Launch a pod
+oc new-build --name rhel-pod --binary  # Create a new build config
+oc start-build rhel-pod --from-dir=.   # Start the build, using the content of the current directory
+oc logs bc/rhel-pod -f                 # View the docker build logs
+oc new-app rhel-pod                    # Launch a pod
 oc get po
 ```
 
@@ -40,7 +40,7 @@ oc rsh <pod name>                     # Remote into the container to see which u
 ps -ef 
 ```
 
-Now do the same with plain docker.  You can see the container runs as root.
+if you have docker, now do the same with plain docker.  You can see the container runs as root.
 
 ```
 docker build -t rhel-pod .
@@ -56,7 +56,18 @@ oc login -u admin       # Must be logged in and not just the system:admin user
 oc project someproject   
 
 oc adm policy add-scc-to-user anyuid -z default
-# oc add policy add-scc-to-user anyuid system:serviceaccount:someproject:default # or the equivilent command 
+
+# or run the equivilent command
+
+# oc adm policy add-scc-to-user anyuid system:serviceaccount:someproject:default 
+
+# Other useful commands
+
+# Add authenitcated user group (all users) to the anyuid SCC
+# oc adm policy add-scc-to-group anyuid system:authenticated --as system:admin
+
+# Remove authenitcated user group (all users) from the anyuid SCC
+# oc adm policy remove-scc-from-group anyuid system:authenticated --as system:admin
 
 oc edit scc anyuid  # verify the change 
 ```
